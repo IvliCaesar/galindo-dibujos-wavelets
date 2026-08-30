@@ -38,18 +38,25 @@ submitted to *Journal of Mathematics and the Arts*.
   random level sets) an actual figure, and is the empirical check that
   each register's reading is stable across independent draws of the
   field rather than an artifact of one seed.
+- `scripts/render_cronenberg_detail.py` — renders the Cronenberg register
+  (identical field, parameters, palette, and presentation treatment as
+  `render_creatures.py`'s `creature_cronenberg.png`) at three times the
+  linear grid resolution (N=2160 vs. N=720), since Cronenberg has both
+  the most wavelet octaves and the lowest roughness exponent and so is
+  the register the standard grid undersamples most visibly.
 
 ## Reproduce
 
 ```
 pip install -r requirements.txt
 cd scripts
-python generative_field.py        # sanity import; regimes/palettes only
-python render_creatures.py        # -> ../figures/*.png, *.pdf
-python plot_texture_roughness.py  # -> ../figures/texture_field.{png,pdf}; prints octave weights
-python color_theory_analysis.py   # prints Table 2's numbers; writes color_theory_summary.json
-python plot_cielab_scatter.py     # -> ../figures/cielab_scatter.{png,pdf}
-python plot_seed_variations.py    # -> ../figures/seed_variations.{png,pdf}
+python generative_field.py           # sanity import; regimes/palettes only
+python render_creatures.py           # -> ../figures/*.png, *.pdf
+python plot_texture_roughness.py     # -> ../figures/texture_field.{png,pdf}; prints octave weights
+python color_theory_analysis.py      # prints Table 2's numbers; writes color_theory_summary.json
+python plot_cielab_scatter.py        # -> ../figures/cielab_scatter.{png,pdf}
+python plot_seed_variations.py       # -> ../figures/seed_variations.{png,pdf}
+python render_cronenberg_detail.py   # -> ../figures/creature_cronenberg_detail.{png,pdf}
 ```
 
 All randomness is seed-fixed (`SEED = 7` in the render scripts, `SEEDS =
