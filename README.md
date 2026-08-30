@@ -30,6 +30,14 @@ submitted to *Journal of Mathematics and the Arts*.
   `.tex` source as well, using the same coordinates this script computes;
   this script remains useful as a standalone raster rendering and as the
   source of the coordinates the TikZ figure hand-transcribes.
+- `scripts/plot_seed_variations.py` — renders three independent texture
+  realizations (seeds 3, 7, 15) of each of the five registers, at
+  otherwise identical parameters. This gives Section 3.1's "stochastic
+  remark" (that a random field replacing the deterministic wavelet
+  coefficients turns the construction into the standard machinery of
+  random level sets) an actual figure, and is the empirical check that
+  each register's reading is stable across independent draws of the
+  field rather than an artifact of one seed.
 
 ## Reproduce
 
@@ -41,11 +49,13 @@ python render_creatures.py        # -> ../figures/*.png, *.pdf
 python plot_texture_roughness.py  # -> ../figures/texture_field.{png,pdf}; prints octave weights
 python color_theory_analysis.py   # prints Table 2's numbers; writes color_theory_summary.json
 python plot_cielab_scatter.py     # -> ../figures/cielab_scatter.{png,pdf}
+python plot_seed_variations.py    # -> ../figures/seed_variations.{png,pdf}
 ```
 
-All randomness is seed-fixed (`SEED = 7` in the render scripts,
-deterministic hashing in the wavelet-texture coefficients), so re-running
-reproduces the article's figures and numbers exactly.
+All randomness is seed-fixed (`SEED = 7` in the render scripts, `SEEDS =
+[3, 7, 15]` in `plot_seed_variations.py`, deterministic hashing in the
+wavelet-texture coefficients), so re-running reproduces the article's
+figures and numbers exactly.
 
 ## Citation
 
