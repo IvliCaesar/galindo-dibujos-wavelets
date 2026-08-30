@@ -19,6 +19,8 @@ submitted to *Journal of Mathematics and the Arts*.
   (D65 white point, via the `colour-science` package) and computes mean
   lightness, mean chroma, circular mean hue, and hue spread — the exact
   numbers reported in the article's CIELAB table.
+- `scripts/plot_cielab_scatter.py` — plots all five palettes as points in
+  the CIELAB $a^*$-$b^*$ plane, each marker in its own true color.
 
 ## Reproduce
 
@@ -29,6 +31,7 @@ python generative_field.py        # sanity import; regimes/palettes only
 python render_creatures.py        # -> ../figures/*.png, *.pdf
 python plot_texture_roughness.py  # -> ../figures/texture_roughness.{png,pdf}
 python color_theory_analysis.py   # prints Table 2's numbers; writes color_theory_summary.json
+python plot_cielab_scatter.py     # -> ../figures/cielab_scatter.{png,pdf}
 ```
 
 All randomness is seed-fixed (`SEED = 7` in the render scripts,
