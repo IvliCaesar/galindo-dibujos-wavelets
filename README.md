@@ -13,14 +13,23 @@ submitted to *Journal of Mathematics and the Arts*.
   Institutional) discussed in the article.
 - `scripts/render_creatures.py` — renders all five creatures and the
   comparison figure.
-- `scripts/plot_texture_roughness.py` — renders the wavelet-texture /
-  per-octave-weight figure isolating the roughness exponent $H$.
+- `scripts/plot_texture_roughness.py` — renders the wavelet texture field
+  $T(x,y)$ in isolation across the four roughness exponents $H$ used in
+  the article, and prints the exact per-octave weight $2^{-jH}$ values.
+  The article typesets the weight values as a native `pgfplots` bar
+  chart directly in the `.tex` source (not as an image from this script)
+  — this script's printed numbers are what that TikZ code embeds, kept
+  here so the two stay verifiably in sync.
 - `scripts/color_theory_analysis.py` — converts each palette to CIELAB
   (D65 white point, via the `colour-science` package) and computes mean
   lightness, mean chroma, circular mean hue, and hue spread — the exact
   numbers reported in the article's CIELAB table.
 - `scripts/plot_cielab_scatter.py` — plots all five palettes as points in
-  the CIELAB $a^*$-$b^*$ plane, each marker in its own true color.
+  the CIELAB $a^*$-$b^*$ plane, each marker in its own true color. The
+  article typesets this as a native `pgfplots` figure directly in the
+  `.tex` source as well, using the same coordinates this script computes;
+  this script remains useful as a standalone raster rendering and as the
+  source of the coordinates the TikZ figure hand-transcribes.
 
 ## Reproduce
 
@@ -29,7 +38,7 @@ pip install -r requirements.txt
 cd scripts
 python generative_field.py        # sanity import; regimes/palettes only
 python render_creatures.py        # -> ../figures/*.png, *.pdf
-python plot_texture_roughness.py  # -> ../figures/texture_roughness.{png,pdf}
+python plot_texture_roughness.py  # -> ../figures/texture_field.{png,pdf}; prints octave weights
 python color_theory_analysis.py   # prints Table 2's numbers; writes color_theory_summary.json
 python plot_cielab_scatter.py     # -> ../figures/cielab_scatter.{png,pdf}
 ```
